@@ -1,0 +1,22 @@
+<h1 class="page-header">Login Page</h1>
+
+<!-- Registration Form -->
+<form [formGroup]="form" (submit)="onLoginSubmit()">
+
+  <!-- Username Input -->
+  <div class="form-group">
+    <label for="username">Username</label>
+      <input type="text" name="username" class="form-control" autocomplete="off" placeholder="*Username" formControlName="username"/>
+  </div>
+
+  <!-- Password Input -->
+  <div class="form-group">
+    <label for="password">Password</label>
+      <input type="password" name="password" class="form-control" autocomplete="off" placeholder="*Password" formControlName="password" />
+  </div>
+
+  <!-- Submit Input -->
+  <input type="submit" class="btn btn-primary" value="Submit" />
+
+</form>
+<!-- Registration Form /-->
