@@ -1,0 +1,44 @@
+<h1 class="page-header">Edit Blog</h1>
+
+<!-- Custom Success/Erro Message -->
+<div class="row show-hide-message" *ngIf="message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+      <form #f="ngForm" (ngSubmit)="updateBlog(f.value)">
+        <div class="form-group">
+          <label for="title">Blog Title</label>
+          <input type="text" name="title" id="title" [(ngModel)]="blog.title" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Blog Content</label>
+            <textarea type="textarea" rows="8" cols="80 "name="content" id="content" [(ngModel)]="blog.content" class="form-control" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input type="text" name="imageUrl" id="imageUrl" [(ngModel)]="blog.imageUrl" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="category">Blog Category</label>
+            <select name="category" id="category" [(ngModel)]="blog.category" class="form-control" required>
+              <option value="career">Career</option>
+              <option value="employment">Employment</option>
+              <option value="upskilling">Upskilling</option>
+              <option value="management">Management</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="status">Blog Status</label>
+            <select name="status" id="status" [(ngModel)]="blog.status" class="form-control" required>
+              <option value=0 >Draft</option>
+              <option value=1>Pending Editing</option>
+            </select>
+        </div>
+        <button class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>

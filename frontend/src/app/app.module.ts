@@ -11,8 +11,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProtectedComponent } from './components/protected/protected.component';
-import { AuthGuard } from './guards/auth.guard';
+import { WriterGuard } from './guards/writer.guard';
 import { HomeComponent } from './components/home/home.component';
+import { CreateblogComponent } from './components/writer/createblog/createblog.component';
+import { WriterhomeComponent } from './components/writer/writerhome.component';
+import { WriterService } from './services/writer.service';
+import { EditblogComponent } from './components/writer/editblog/editblog.component';
 
 
 @NgModule({
@@ -22,7 +26,10 @@ import { HomeComponent } from './components/home/home.component';
     RegisterComponent,
     LoginComponent,
     ProtectedComponent,
-    HomeComponent
+    HomeComponent,
+    CreateblogComponent,
+    WriterhomeComponent,
+    EditblogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +38,7 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [AuthService,AuthGuard],
+  providers: [AuthService, WriterGuard, WriterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

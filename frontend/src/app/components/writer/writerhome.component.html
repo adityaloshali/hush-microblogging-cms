@@ -1,0 +1,34 @@
+<div class="container">
+  <button class="btn btn-primary" routerLink="/writer/newblog">New Blog</button>
+  <button class="btn btn-primary" (click)="getBlogs()">Get Blogs</button>
+</div>
+<br />
+<br />
+<div class="panel panel-primary" *ngFor="let blog of blogPosts">
+
+    <!-- Panel Title -->
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ blog.title }}</h3>
+    </div>
+
+    <!-- Panel Body -->
+    <div class="panel-body">
+      {{ blog.content }}
+    </div>
+
+    <!-- Panel Footer Start -->
+    <div class="panel-footer">
+      <strong>Posted by: </strong>{{ blog.authorName }}
+      <br />
+      <strong>Date: </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}
+      
+      <!-- Edit Button -->
+      <a [routerLink]="['/writer/edit-blog/', blog._id]" ><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
+      <!-- Delete Button -->
+      <a [routerLink]="['/writer/delete-blog/', blog._id]" ><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a>
+
+     
+
+    </div>
+    <!-- Panel Footer End -->
+  </div>

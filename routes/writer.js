@@ -22,11 +22,13 @@ router.get("/",function(req, res){
 router.post("/new",function(req, res){
     const blog = new db.Blog({
         title: req.body.title,
-        body: req.body.content,
-        createdBy: req.userData.username
+        content: req.body.content,
+        imageUrl: req.body.imageUrl,
+        category: req.body.category,
+        authorName: req.userData.username
     });
 
-    console.log(req.body.title+" "+req.body.content+" "+req.userData.username);
+    console.log(req.body.title+" "+req.body.content+" ");
 
     // Save blog into database
     blog.save((err) => {
@@ -45,7 +47,8 @@ router.get("/:id",function(req, res){
         res.json({ success: false, message: 'No blog ID was provided.' }); // Return error message
       } else {
         // Check if the blog id is found in database
-        Blog.findOne({ _id: req.params.id }, (err, blog) => {
+
+        db.Blog.findOne({ _id: req.params.id }, (err, blog) => {
           // Check if the id is a valid ID
           if (err) {
             res.json({ success: false, message: 'Not a valid blog id' }); // Return error message
@@ -62,12 +65,12 @@ router.get("/:id",function(req, res){
 });
 
 router.put("/:id",function(req, res){
-    // Check if id is present in parameters
+    //Check if id is present in parameters
     if (!req.params.id) {
         res.json({ success: false, message: 'No blog ID was provided.' }); // Return error message
       } else {
         // Check if the blog id is found in database
-        Blog.findOne({ _id: req.params.id }, (err, blog) => {
+        db.Blog.findOne({ _id: req.params.id }, (err, blog) => {
           // Check if the id is a valid ID
           if (err) {
             res.json({ success: false, message: 'Not a valid blog id' }); // Return error message
@@ -77,7 +80,10 @@ router.put("/:id",function(req, res){
                 res.json({ success: false, message: 'Blog not found.' }); // Return error message
             } else {
                 blog.title = req.body.title; // Save latest blog title
-                blog.body = req.body.content; // Save latest body
+                blog.content = req.body.content; // Save latest body
+                blog.imageUrl = req.body.imageUrl;
+                blog.category = req.body.category;
+                blog.status = req.body.status;
                 blog.save((err) => {
                     if (err) {
                         res.json({ success: false, message: err }); // Return error message

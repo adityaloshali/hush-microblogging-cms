@@ -40,7 +40,7 @@ app.use((req, res, next) => {
   });
 
 app.use("/api/auth", authRoutes);
-app.use("/api/writer", loginRequired, writerRoutes);
+app.use("/api/writer",loginRequired, writerRoutes);
 app.use("/api/editor", loginRequired, ensureEditor, editorRoutes);
 
 app.get("/api/:id", loginRequired ,function(req, res){

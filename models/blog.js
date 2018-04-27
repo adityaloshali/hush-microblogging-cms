@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 const User = require("./user");
 
 const blogSchema = new mongoose.Schema(
   {
+    _id: Number,
     title: { 
       type: String,
       required: true, 
@@ -14,7 +16,6 @@ const blogSchema = new mongoose.Schema(
     },
     authorName: {
       type: String,
-      required: true
     },
     imageUrl:{
       type: String,
@@ -32,8 +33,9 @@ const blogSchema = new mongoose.Schema(
       type: Date, 
       default: Date.now() 
     }
-  }  
+  }, { _id: false }  
 );
 
+blogSchema.plugin(AutoIncrement);
 const Blog = mongoose.model("Blog",blogSchema);
 module.exports = Blog;

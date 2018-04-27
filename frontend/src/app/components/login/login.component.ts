@@ -55,27 +55,28 @@ export class LoginComponent{
 
     // Function to send login data to API
     this.authService.login(user).subscribe(data => {
-      // Check if response was a success or error
-      // if (!data.success) {
-      //   this.messageClass = 'alert alert-danger'; // Set bootstrap error class
-      //   this.message = data.message; // Set error message
-      //   this.processing = false; // Enable submit button
-      //   this.enableForm(); // Enable form for editting
-      // } else {
-      //   this.messageClass = 'alert alert-success'; // Set bootstrap success class
-      //   this.message = data.message; // Set success message
-      //   // Function to store user's token in client local storage
-      //   this.authService.storeUserData(data.token, data.user);
-      //   // After 2 seconds, redirect to dashboard page
-      //   setTimeout(() => {
-      //     // Check if user was redirected or logging in for first time
-      //     if (this.previousUrl) {
-      //       this.router.navigate([this.previousUrl]); // Redirect to page they were trying to view before
-      //     } else {
-      //       this.router.navigate(['/dashboard']); // Navigate to dashboard view
-      //     }
-      //   }, 2000);
-      // }
+      //Check if response was a success or error
+      if (!data.success) {
+        this.messageClass = 'alert alert-danger'; // Set bootstrap error class
+        this.message = data.message; // Set error message
+        this.processing = false; // Enable submit button
+        this.enableForm(); // Enable form for editting
+      } else {
+        this.messageClass = 'alert alert-success'; // Set bootstrap success class
+        this.message = data.message; // Set success message
+        // Function to store user's token in client local storage
+        this.authService.storeUserData(data.token, data.username, data.authority, data.id);
+        // After 2 seconds, redirect to dashboard page
+        setTimeout(() => {
+            console.log(this.authService.authority);
+          // Check if user was redirected or logging in for first time
+            if(this.authService.authority === "writer"){
+              this.router.navigate(['/writer']);
+            }else{
+              this.router.navigate(['/protected']); // Navigate to dashboard view
+            }          
+        }, 2000);
+      }
     });
   }
 

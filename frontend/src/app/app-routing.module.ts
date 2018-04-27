@@ -3,8 +3,11 @@ import { NgModule } from '@angular/core';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProtectedComponent } from './components/protected/protected.component';
-import { AuthGuard } from './guards/auth.guard';
+import { WriterGuard } from './guards/writer.guard';
 import { HomeComponent } from './components/home/home.component';
+import { CreateblogComponent } from './components/writer/createblog/createblog.component';
+import { WriterhomeComponent } from './components/writer/writerhome.component';
+import { EditblogComponent } from './components/writer/editblog/editblog.component';
 
 
 // Our Array of Angular 2 Routes
@@ -25,7 +28,20 @@ const appRoutes: Routes = [
   {
     path: 'protected',
     component: ProtectedComponent,
-    canActivate: [AuthGuard] // Login Route// User must NOT be logged in to view this route
+    canActivate: [WriterGuard] // Login Route// User must NOT be logged in to view this route
+  },
+  {
+    path: 'writer',
+    component: WriterhomeComponent,
+    canActivate: [WriterGuard]  // Login Route// User must NOT be logged in to view this route
+  },
+  {
+    path: 'writer/newblog',
+    component: CreateblogComponent // Login Route// User must NOT be logged in to view this route
+  },
+  {
+    path: 'writer/edit-blog/:id',
+    component : EditblogComponent
   }
 ];
 
