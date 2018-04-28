@@ -98,5 +98,34 @@ router.put("/:id",function(req, res){
 
 });
 
+router.delete("/:id",function(req, res){
+  // Check if id is present in parameters
+  if (!req.params.id) {
+      res.json({ success: false, message: 'No blog ID was provided.' }); // Return error message
+    } else {
+      // Check if the blog id is found in database
+
+      db.Blog.findOne({ _id: req.params.id }, (err, blog) => {
+        // Check if the id is a valid ID
+        if (err) {
+          res.json({ success: false, message: 'Not a valid blog id' }); // Return error message
+        } else {
+          // Check if blog was found by id
+          if (!blog) {
+              res.json({ success: false, message: 'Blog not found.' }); // Return error message
+          } else {
+              blog.remove((err) => {
+                if (err) {
+                  res.json({ success: false, message: err }); // Return error message
+                } else {
+                  res.json({ success: true, message: 'Blog deleted!' }); // Return success message
+                }
+              });
+          }
+        }
+      });
+    }
+});
+
 
 module.exports = router;

@@ -58,4 +58,12 @@ export class WriterService {
     });
   }
 
+  deleteBlog(id){
+    this.createAuthenticationHeaders(); // Create headers
+    return this.http.delete(this.domain + 'api/writer/'+ id , this.options).map(res => { 
+      console.log(res.json());
+      return res.json(); 
+    });
+  }
+
 }

@@ -13,7 +13,6 @@ export class WriterhomeComponent implements OnInit {
   constructor(private writerService: WriterService) { }
 
   getBlogs(){
-    console.log();
     this.writerService.getAllBlogs().subscribe(data => {
       this.blogPosts = data.blogs;
       console.log(this.blogPosts);
@@ -21,6 +20,10 @@ export class WriterhomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.writerService.getAllBlogs().subscribe(data => {
+      this.blogPosts = data.blogs;
+      console.log(this.blogPosts);
+    });
   }
 
 }

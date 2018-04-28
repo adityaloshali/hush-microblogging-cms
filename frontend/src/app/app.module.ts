@@ -17,6 +17,7 @@ import { CreateblogComponent } from './components/writer/createblog/createblog.c
 import { WriterhomeComponent } from './components/writer/writerhome.component';
 import { WriterService } from './services/writer.service';
 import { EditblogComponent } from './components/writer/editblog/editblog.component';
+import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EditblogComponent } from './components/writer/editblog/editblog.compone
     HomeComponent,
     CreateblogComponent,
     WriterhomeComponent,
-    EditblogComponent
+    EditblogComponent,
+    DeleteblogComponent
   ],
   imports: [
     BrowserModule,

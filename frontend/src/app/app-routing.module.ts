@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CreateblogComponent } from './components/writer/createblog/createblog.component';
 import { WriterhomeComponent } from './components/writer/writerhome.component';
 import { EditblogComponent } from './components/writer/editblog/editblog.component';
+import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.component';
 
 
 // Our Array of Angular 2 Routes
@@ -42,6 +43,10 @@ const appRoutes: Routes = [
   {
     path: 'writer/edit-blog/:id',
     component : EditblogComponent
+  },
+  {
+    path: 'writer/delete-blog/:id',
+    component: DeleteblogComponent
   }
 ];
 

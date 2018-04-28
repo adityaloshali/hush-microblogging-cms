@@ -12,7 +12,7 @@ const blogSchema = new mongoose.Schema(
     content: { 
       type: String,
       required: true,
-      maxlength: 240
+      //maxlength: 240
     },
     authorName: {
       type: String,
