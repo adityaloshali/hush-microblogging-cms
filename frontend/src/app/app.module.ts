@@ -18,6 +18,9 @@ import { WriterhomeComponent } from './components/writer/writerhome.component';
 import { WriterService } from './services/writer.service';
 import { EditblogComponent } from './components/writer/editblog/editblog.component';
 import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.component';
+import { EditorhomeComponent } from './components/editorhome/editorhome.component';
+import { EditorGuard } from './guards/editor.guard';
+import { EditorService } from './services/editor.service';
 
 
 @NgModule({
@@ -31,7 +34,8 @@ import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.c
     CreateblogComponent,
     WriterhomeComponent,
     EditblogComponent,
-    DeleteblogComponent
+    DeleteblogComponent,
+    EditorhomeComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,7 @@ import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.c
     FormsModule,
     AppRoutingModule
   ],
-  providers: [AuthService, WriterGuard, WriterService],
+  providers: [AuthService, WriterGuard, WriterService, EditorGuard, EditorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

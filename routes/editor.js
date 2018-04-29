@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
-const { signup, signin } = require("../controllers/auth");
 
 router.get("/", function(req, res){
     // Search database for all blog posts
-    db.Blog.find({}, (err, blogs) => {
+    db.Blog.find({status:1}, (err, blogs) => {
         // Check if error was found or not
         if (err) {
           res.json({ success: false, message: err }); // Return error message

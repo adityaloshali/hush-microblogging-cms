@@ -9,6 +9,8 @@ import { CreateblogComponent } from './components/writer/createblog/createblog.c
 import { WriterhomeComponent } from './components/writer/writerhome.component';
 import { EditblogComponent } from './components/writer/editblog/editblog.component';
 import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.component';
+import { EditorhomeComponent } from './components/editorhome/editorhome.component';
+import { EditorGuard } from './guards/editor.guard';
 
 
 // Our Array of Angular 2 Routes
@@ -47,7 +49,12 @@ const appRoutes: Routes = [
   {
     path: 'writer/delete-blog/:id',
     component: DeleteblogComponent
-  }
+  },
+  {
+    path: 'editor',
+    component: EditorhomeComponent,
+    canActivate: [EditorGuard]
+  },
 ];
 
 @NgModule({

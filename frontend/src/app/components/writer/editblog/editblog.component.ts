@@ -11,7 +11,7 @@ export class EditblogComponent implements OnInit {
 
   message;
   messageClass;
-  blog = {};
+  blog = { "_id" : null};
   processing = false;
   currentParams;
   loading = true;

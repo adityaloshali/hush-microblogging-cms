@@ -73,7 +73,7 @@ export class LoginComponent{
             if(this.authService.authority === "writer"){
               this.router.navigate(['/writer']);
             }else{
-              this.router.navigate(['/protected']); // Navigate to dashboard view
+              this.router.navigate(['/editor']); // Navigate to dashboard view
             }          
         }, 2000);
       }
