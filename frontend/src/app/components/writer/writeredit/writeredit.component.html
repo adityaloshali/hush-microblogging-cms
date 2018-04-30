@@ -23,6 +23,10 @@
             <input type="text" name="imageUrl" id="imageUrl" [(ngModel)]="blog.imageUrl" class="form-control" required>
         </div>
         <div class="form-group">
+            <label for="tags">Tags( space separated )</label>
+            <input type="text" name="tags" id="tags" [(ngModel)]="blog.tags" class="form-control" required>
+        </div>
+        <div class="form-group">
             <label for="category">Blog Category</label>
             <select name="category" id="category" [(ngModel)]="blog.category" class="form-control" required>
               <option value="career">Career</option>

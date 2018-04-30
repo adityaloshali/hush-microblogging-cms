@@ -25,7 +25,9 @@ router.post("/new",function(req, res){
         content: req.body.content,
         imageUrl: req.body.imageUrl,
         category: req.body.category,
+        tags : req.body.tags,
         authorName: req.userData.username
+       
     });
 
     console.log(req.body.title+" "+req.body.content+" ");
@@ -84,6 +86,7 @@ router.put("/:id",function(req, res){
                 blog.imageUrl = req.body.imageUrl;
                 blog.category = req.body.category;
                 blog.status = req.body.status;
+                blog.tags = req.body.tags;
                 blog.save((err) => {
                     if (err) {
                         res.json({ success: false, message: err }); // Return error message

@@ -7,7 +7,7 @@ import { WriterGuard } from './guards/writer.guard';
 import { HomeComponent } from './components/home/home.component';
 import { CreateblogComponent } from './components/writer/createblog/createblog.component';
 import { WriterhomeComponent } from './components/writer/writerhome.component';
-import { EditblogComponent } from './components/writer/editblog/editblog.component';
+import { WritereditComponent } from './components/writer/writeredit/writeredit.component';
 import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.component';
 import { EditorhomeComponent } from './components/editorhome/editorhome.component';
 import { EditorGuard } from './guards/editor.guard';
@@ -44,7 +44,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'writer/edit-blog/:id',
-    component : EditblogComponent
+    component : WritereditComponent
   },
   {
     path: 'writer/delete-blog/:id',
@@ -55,6 +55,10 @@ const appRoutes: Routes = [
     component: EditorhomeComponent,
     canActivate: [EditorGuard]
   },
+  // {
+  //   path: 'editor/edit-blog/:id',
+  //   component: 
+  // }
 ];
 
 @NgModule({

@@ -4,10 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-editblog',
-  templateUrl: './editblog.component.html',
-  styleUrls: ['./editblog.component.css']
+  templateUrl: './writeredit.component.html',
+  styleUrls: ['./writeredit.component.css']
 })
-export class EditblogComponent implements OnInit {
+export class WritereditComponent implements OnInit {
 
   message;
   messageClass;
@@ -25,6 +25,8 @@ export class EditblogComponent implements OnInit {
   updateBlog(blog){
      let id = this.blog._id;
      blog.status = Number(blog.status);
+     blog.tags = blog.tags.trim().split(" ");
+     console.log(blog);
      this.writerService.updateBlog(id, blog).subscribe(data => {
        console.log(data);
      });
@@ -39,8 +41,10 @@ export class EditblogComponent implements OnInit {
         this.messageClass = 'alert alert-danger'; // Set bootstrap error class
         this.message = data.message; // Set error message
       } else {
+        console.log(data.blog);
+        data.blog.tags = data.blog.tags.join(" ");
+        console.log(data.blog);
         this.blog = data.blog; // Save blog object for use in HTML
-        
         this.loading = false; // Allow loading of blog form
       }
     });        

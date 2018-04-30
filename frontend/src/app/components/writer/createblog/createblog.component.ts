@@ -11,6 +11,7 @@ export class CreateblogComponent implements OnInit {
   constructor(private writerService: WriterService) { }
 
   saveBlog(blog){
+    blog.tags = blog.tags.trim().split(" ");
     console.log(blog);
     this.writerService.createBlog(blog).subscribe(data => {
       console.log(data);
