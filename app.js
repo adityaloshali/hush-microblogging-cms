@@ -6,7 +6,8 @@ const bodyParser = require("body-parser");
 const authRoutes = require("./routes/auth");
 const writerRoutes = require("./routes/writer");
 const editorRoutes = require("./routes/editor");
-const { loginRequired, ensureCorrectUser, ensureEditor } = require("./middlewares/auth");
+const getBlogsRoute = require("./routes/getAll");
+const { loginRequired, ensureEditor } = require("./middlewares/auth");
 
 mongoose.connect("mongodb://localhost/hushapi", {
   }, (err) => {
@@ -42,14 +43,7 @@ app.use((req, res, next) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/writer",loginRequired, writerRoutes);
 app.use("/api/editor", loginRequired, ensureEditor, editorRoutes);
-
-app.get("/api/:id", loginRequired ,function(req, res){
-  console.log(req.params.id);
-  console.log(req.query.hello);
-  res.send("Hello");
-  console.log("Hey");
-  //console.log(req.userData);
-});
+app.use("/api/getBlogs", getBlogsRoute);
 
 app.get("/api/all/:id", loginRequired ,function(req, res){
   res.send("Hello");

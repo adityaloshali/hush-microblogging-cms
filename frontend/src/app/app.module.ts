@@ -21,6 +21,7 @@ import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.c
 import { EditorhomeComponent } from './components/editorhome/editorhome.component';
 import { EditorGuard } from './guards/editor.guard';
 import { EditorService } from './services/editor.service';
+import { EditoreditComponent } from './components/editorhome/editoredit/editoredit.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { EditorService } from './services/editor.service';
     WriterhomeComponent,
     WritereditComponent,
     DeleteblogComponent,
-    EditorhomeComponent
+    EditorhomeComponent,
+    EditoreditComponent
   ],
   imports: [
     BrowserModule,

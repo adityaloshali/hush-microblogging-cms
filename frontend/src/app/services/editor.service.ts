@@ -35,5 +35,20 @@ export class EditorService {
     });
   }
 
+  getSingleBlog(id){
+    this.createAuthenticationHeaders(); // Create headers
+    return this.http.get(this.domain + 'api/editor/'+ id , this.options).map(res => { 
+      console.log(res.json());
+      return res.json(); 
+    });
+  }
+
+  updateBlog(id, blog){
+    this.createAuthenticationHeaders(); // Create headers
+    return this.http.put(this.domain + 'api/editor/'+ id , blog , this.options).map(res => { 
+      console.log(res.json());
+      return res.json(); 
+    });
+  }
 
 }

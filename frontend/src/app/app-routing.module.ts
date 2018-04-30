@@ -11,6 +11,7 @@ import { WritereditComponent } from './components/writer/writeredit/writeredit.c
 import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.component';
 import { EditorhomeComponent } from './components/editorhome/editorhome.component';
 import { EditorGuard } from './guards/editor.guard';
+import { EditoreditComponent } from './components/editorhome/editoredit/editoredit.component';
 
 
 // Our Array of Angular 2 Routes
@@ -55,10 +56,10 @@ const appRoutes: Routes = [
     component: EditorhomeComponent,
     canActivate: [EditorGuard]
   },
-  // {
-  //   path: 'editor/edit-blog/:id',
-  //   component: 
-  // }
+  {
+    path: 'editor/edit-blog/:id',
+    component: EditoreditComponent
+  }
 ];
 
 @NgModule({

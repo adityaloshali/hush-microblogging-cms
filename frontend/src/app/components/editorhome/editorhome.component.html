@@ -22,12 +22,8 @@
       <strong>Date: </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}
       
       <!-- Edit Button -->
-      <a [routerLink]="['/writer/edit-blog/', blog._id]" ><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
-      <!-- Delete Button -->
-      <a [routerLink]="['/writer/delete-blog/', blog._id]" ><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a>
-
-     
-
+      <a [routerLink]="['/editor/edit-blog/', blog._id]" ><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
+  
     </div>
     <!-- Panel Footer End -->
   </div>
