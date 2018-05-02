@@ -1,11 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
-const { signup, signin } = require("../controllers/auth");
 
 router.get("/",function(req, res){
 
-    db.Blog.find(req.query,(err, blogs) => {
+    let query = null;
+    if(req.query.title){
+        req.query.title = {'$regex': req.query.title };
+        query = req.query;
+    }else{
+        query = req.query;
+    }
+
+    db.Blog.find( query ,(err, blogs) => {
         // Check if error was found or not
         if (err) {
           res.json({ success: false, message: err }); // Return error message

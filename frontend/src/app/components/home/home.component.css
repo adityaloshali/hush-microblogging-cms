@@ -1,0 +1,11 @@
+.hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.hero h1{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10rem;
+}

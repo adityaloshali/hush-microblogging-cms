@@ -12,6 +12,8 @@ import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.c
 import { EditorhomeComponent } from './components/editorhome/editorhome.component';
 import { EditorGuard } from './guards/editor.guard';
 import { EditoreditComponent } from './components/editorhome/editoredit/editoredit.component';
+import { NotAuthGuard } from './guards/notAuth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 
 // Our Array of Angular 2 Routes
@@ -22,43 +24,48 @@ const appRoutes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent // Register Route
- // User must NOT be logged in to view this route
+    component: RegisterComponent, // Register Route
+    canActivate: [NotAuthGuard] // User must NOT be logged in to view this route
   },
   {
     path: 'login',
-    component: LoginComponent // Login Route// User must NOT be logged in to view this route
+    component: LoginComponent, // Login Route// User must NOT be logged in to view this route
+    canActivate: [NotAuthGuard] 
   },
   {
     path: 'protected',
     component: ProtectedComponent,
-    canActivate: [WriterGuard] // Login Route// User must NOT be logged in to view this route
+    canActivate: [AuthGuard] 
   },
   {
     path: 'writer',
     component: WriterhomeComponent,
-    canActivate: [WriterGuard]  // Login Route// User must NOT be logged in to view this route
+    canActivate: [WriterGuard, AuthGuard]  // Login Route// User must NOT be logged in to view this route
   },
   {
     path: 'writer/newblog',
-    component: CreateblogComponent // Login Route// User must NOT be logged in to view this route
+    component: CreateblogComponent,
+    canActivate: [WriterGuard, AuthGuard]   // Login Route// User must NOT be logged in to view this route
   },
   {
     path: 'writer/edit-blog/:id',
-    component : WritereditComponent
+    component : WritereditComponent,
+    canActivate: [WriterGuard, AuthGuard] 
   },
   {
     path: 'writer/delete-blog/:id',
-    component: DeleteblogComponent
+    component: DeleteblogComponent,
+    canActivate: [WriterGuard, AuthGuard] 
   },
   {
     path: 'editor',
     component: EditorhomeComponent,
-    canActivate: [EditorGuard]
+    canActivate: [EditorGuard, AuthGuard]
   },
   {
     path: 'editor/edit-blog/:id',
-    component: EditoreditComponent
+    component: EditoreditComponent,
+    canActivate: [EditorGuard, AuthGuard] 
   }
 ];
 

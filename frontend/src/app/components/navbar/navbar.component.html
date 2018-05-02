@@ -15,9 +15,11 @@
         <li><a routerLink="/">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/register">Register</a></li>
-        <li><a routerLink="/protected">Protected</a></li>
-        <li><a routerLink="/login">Login</a></li>
+        <li><a *ngIf="authService.loggedIn()" routerLink="/writer">WriterHome</a></li>
+        <li><a *ngIf="authService.loggedIn()" routerLink="/editor">EditorHome</a></li>
+        <li><a *ngIf="authService.loggedIn()" href="#" (click)="onLogoutClick()">Logout</a></li>
+        <li><a *ngIf="!authService.loggedIn()" routerLink="/register">Register</a></li>
+        <li><a *ngIf="!authService.loggedIn()" routerLink="/login">Login</a></li>
       </ul>
     </div>
     <!--/.nav-collapse -->

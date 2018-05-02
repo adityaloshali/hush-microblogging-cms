@@ -22,6 +22,8 @@ import { EditorhomeComponent } from './components/editorhome/editorhome.componen
 import { EditorGuard } from './guards/editor.guard';
 import { EditorService } from './services/editor.service';
 import { EditoreditComponent } from './components/editorhome/editoredit/editoredit.component';
+import { AuthGuard } from './guards/auth.guard';
+import { NotAuthGuard } from './guards/notAuth.guard';
 
 
 @NgModule({
@@ -46,7 +48,7 @@ import { EditoreditComponent } from './components/editorhome/editoredit/editored
     FormsModule,
     AppRoutingModule
   ],
-  providers: [AuthService, WriterGuard, WriterService, EditorGuard, EditorService],
+  providers: [AuthService, WriterGuard, WriterService, EditorGuard, EditorService, AuthGuard, NotAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

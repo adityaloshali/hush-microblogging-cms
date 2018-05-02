@@ -1,3 +1,10 @@
+<!-- Custom Success/Error Message -->
+<div class="row show-hide-message" *ngIf="message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-12">
     <form #f="ngForm" (ngSubmit)="saveBlog(f.value)">

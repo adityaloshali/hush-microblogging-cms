@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { environment } from '../../environments/environment';
-import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable()
 export class AuthService {
   domain = environment.domain;
   authority;
-  authToken;
+  authToken = null;
   userName;
   userId;
   options;
@@ -69,11 +69,44 @@ export class AuthService {
 
   // Function to get token from client local storage
   loadToken() {
-    this.authToken = localStorage.getItem('hushToken');; // Get token and asssign to variable to be used elsewhere
+    this.authToken = localStorage.getItem('hushToken'); // Get token and asssign to variable to be used elsewhere
   }
 
   // Function to check if user is logged in
   loggedIn() {
-    return tokenNotExpired();
+    let authToken = localStorage.getItem('hushToken');
+    // if(authToken){
+    //   return true;
+    // }else{
+    //   return false;
+    // }
+    if(!this.isTokenExpired(authToken)){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  hasAuthority(){
+    return localStorage.getItem('hushAuthority');
+  }
+
+  getTokenExpirationDate(token: string): Date {
+    const decoded = jwt_decode(token);
+
+    if (decoded.exp === undefined) return null;
+
+    const date = new Date(0); 
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
+
+  isTokenExpired(token?: string): boolean {
+    //if(!token) token = this.getToken();
+    if(!token) return true;
+
+    const date = this.getTokenExpirationDate(token);
+    if(date === undefined) return false;
+    return !(date.valueOf() > new Date().valueOf());
   }
 }

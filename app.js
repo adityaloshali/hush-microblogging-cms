@@ -7,7 +7,7 @@ const authRoutes = require("./routes/auth");
 const writerRoutes = require("./routes/writer");
 const editorRoutes = require("./routes/editor");
 const getBlogsRoute = require("./routes/getAll");
-const { loginRequired, ensureEditor } = require("./middlewares/auth");
+const { loginRequired, ensureEditor, ensureWriter } = require("./middlewares/auth");
 
 mongoose.connect("mongodb://localhost/hushapi", {
   }, (err) => {
@@ -41,7 +41,7 @@ app.use((req, res, next) => {
   });
 
 app.use("/api/auth", authRoutes);
-app.use("/api/writer",loginRequired, writerRoutes);
+app.use("/api/writer",loginRequired, ensureWriter,writerRoutes);
 app.use("/api/editor", loginRequired, ensureEditor, editorRoutes);
 app.use("/api/getBlogs", getBlogsRoute);
 

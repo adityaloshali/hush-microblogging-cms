@@ -29,6 +29,17 @@ export class EditoreditComponent implements OnInit {
      console.log(blog);
      this.editorService.updateBlog(id, blog).subscribe(data => {
        console.log(data);
+       if (!data.success) {
+        this.messageClass = 'alert alert-danger'; // Return error class
+        this.message = data.message; // Return error message
+        } else {
+          this.messageClass = 'alert alert-success'; // Return success class
+          this.message = data.message; // Return success message
+          // Clear form data after two seconds
+          setTimeout(() => {
+            this.router.navigate(['/editor']);
+          }, 2000);
+      }
      });
   }
 

@@ -16,14 +16,15 @@
     </div>
 
     <!-- Panel Footer Start -->
-    <div class="panel-footer">
-      <strong>Posted by: </strong>{{ blog.authorName }}
-      <br />
-      <strong>Date: </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}
-      
-      <!-- Edit Button -->
-      <a [routerLink]="['/editor/edit-blog/', blog._id]" ><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
-  
-    </div>
+    <div class="panel-footer footer">
+        <div>
+            <strong>Posted by: </strong>{{ blog.authorName }}
+            <strong> on </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}    
+        </div>
+        <div>
+          <!-- Edit Button -->
+          <a [routerLink]="['/editor/edit-blog/', blog._id]" ><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
+        </div>
+      </div>
     <!-- Panel Footer End -->
   </div>
