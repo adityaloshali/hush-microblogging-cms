@@ -66,7 +66,8 @@ const appRoutes: Routes = [
     path: 'editor/edit-blog/:id',
     component: EditoreditComponent,
     canActivate: [EditorGuard, AuthGuard] 
-  }
+  },
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({

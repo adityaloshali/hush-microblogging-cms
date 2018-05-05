@@ -11,10 +11,16 @@ export class CreateblogComponent implements OnInit {
 
   messageClass;
   message;
+  contentLength = 0;
 
   constructor(
     private writerService: WriterService,
     private router: Router) { }
+
+  contentChange(searchValue : string ) {  
+    let word = searchValue.trim().split(" ");
+    this.contentLength = word.length;
+  }  
 
   saveBlog(blog){
     blog.tags = blog.tags.trim().split(" ");

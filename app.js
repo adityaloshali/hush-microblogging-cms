@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const path = require('path'); // NodeJS Package for file paths
 
 const authRoutes = require("./routes/auth");
 const writerRoutes = require("./routes/writer");
@@ -23,7 +24,7 @@ mongoose.Promise = global.Promise;
 
 app.set("view engine", "ejs");
 //to declare public folder as the host of static files like css
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public')); // Provide static directory for frontend
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -45,10 +46,9 @@ app.use("/api/writer",loginRequired, ensureWriter,writerRoutes);
 app.use("/api/editor", loginRequired, ensureEditor, editorRoutes);
 app.use("/api/getBlogs", getBlogsRoute);
 
-app.get("/api/all/:id", loginRequired ,function(req, res){
-  res.send("Hello");
-  console.log("Hey");
-  console.log(req.userData);
+// Connect server to Angular 2 Index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 app.use((req, res, next) => {

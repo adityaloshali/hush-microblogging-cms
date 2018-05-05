@@ -23,7 +23,7 @@ let validUsername = (username) => {
     return false; // Return error
   } else {
     // Regular expression to test if username format is valid
-    const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
+    const regExp = new RegExp(/^[a-zA-Z0-9\s]+$/);
     return regExp.test(username); // Return regular expression test result (true or false)
   }
 };

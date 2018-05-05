@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
   // Function to validate username is proper format
   validateUsername(controls) {
     // Create a regular expression
-    const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
+    const regExp = new RegExp(/^[a-zA-Z0-9\s]+$/);
     // Test username against regular expression
     if (regExp.test(controls.value)) {
       return null; // Return as valid username

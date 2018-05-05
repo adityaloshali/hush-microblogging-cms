@@ -15,6 +15,7 @@ export class EditoreditComponent implements OnInit {
   processing = false;
   currentParams;
   loading = true;
+  contentLength = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -22,6 +23,11 @@ export class EditoreditComponent implements OnInit {
     private editorService: EditorService
   ) { }
 
+  contentChange(searchValue : string ) {  
+    let word = searchValue.trim().split(" ");
+    this.contentLength = word.length;
+  }
+  
   updateBlog(blog){
      let id = this.blog._id;
      blog.status = Number(blog.status);
@@ -30,6 +36,7 @@ export class EditoreditComponent implements OnInit {
      this.editorService.updateBlog(id, blog).subscribe(data => {
        console.log(data);
        if (!data.success) {
+        console.log(data);
         this.messageClass = 'alert alert-danger'; // Return error class
         this.message = data.message; // Return error message
         } else {

@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const config = require("../config/db");
 
 exports.getBlogs = function(req, res){
-    db.Blog.find({authorName:req.userData.username},(err, blogs) => {
+    db.Blog.find({authorName:req.userData.username,status:{$in:[0,1]}},(err, blogs) => {
         // Check if error was found or not
         if (err) {
           res.json({ success: false, message: err }); // Return error message

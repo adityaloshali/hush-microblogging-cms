@@ -65,7 +65,14 @@ exports.getBlog = function(req, res){
                 blog.tags = req.body.tags;
                 blog.save((err) => {
                     if (err) {
-                        res.json({ success: false, message: err }); // Return error message
+                      if (err.errors) {
+                        // Check if validation error is in the content field
+                        if (err.errors.content) {
+                          res.json({ success: false, message: err.errors.content.message }); // Return error message
+                        }
+                      } else {
+                        res.json({ success: false, message: err }); // Return general error message
+                      } 
                     } else {
                         res.json({ success: true, message: 'Blog Updated!' }); // Return success message
                     }

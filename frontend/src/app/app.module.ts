@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation'
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -46,9 +47,16 @@ import { NotAuthGuard } from './guards/notAuth.guard';
     HttpModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CustomFormsModule
   ],
-  providers: [AuthService, WriterGuard, WriterService, EditorGuard, EditorService, AuthGuard, NotAuthGuard],
+  providers: [AuthService, 
+    WriterGuard, 
+    WriterService, 
+    EditorGuard, 
+    EditorService, 
+    AuthGuard, 
+    NotAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,12 +15,18 @@ export class WritereditComponent implements OnInit {
   processing = false;
   currentParams;
   loading = true;
+  contentLength = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private writerService: WriterService
   ) { }
+
+  contentChange(searchValue : string ) {  
+    let word = searchValue.trim().split(" ");
+    this.contentLength = word.length;
+  }
 
   updateBlog(blog){
      let id = this.blog._id;
