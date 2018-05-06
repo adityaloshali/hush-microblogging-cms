@@ -17,11 +17,11 @@
 
     <!-- Panel Footer Start -->
     <div class="panel-footer footer">
-        <div>
+        <div class="writer-info">
             <strong>Posted by: </strong>{{ blog.authorName }}
             <strong> on </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}    
         </div>
-        <div>
+        <div class="crud-routes">
           <!-- Edit Button -->
           <a [routerLink]="['/editor/edit-blog/', blog._id]" ><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
         </div>

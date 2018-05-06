@@ -1,6 +1,6 @@
 <div class="container">
   <button class="btn btn-primary" routerLink="/writer/newblog">New Blog</button>
-  <button class="btn btn-primary" (click)="getBlogs()">Reload Blogs</button>
+  <button [disabled]="loadingBlogs" class="btn btn-primary" (click)="reloadBlogs()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;Reload</button>
 </div>
 <br />
 <br />
@@ -18,11 +18,11 @@
 
     <!-- Panel Footer Start -->
     <div class="panel-footer footer">
-      <div>
+      <div class="writer-info">
           <strong>Posted by: </strong>{{ blog.authorName }}
           <strong> on </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}    
       </div>
-      <div>
+      <div class="crud-routes">
         <!-- Edit Button -->
         <a [routerLink]="['/writer/edit-blog/', blog._id]" ><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
         <!-- Delete Button -->

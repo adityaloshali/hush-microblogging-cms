@@ -394,14 +394,14 @@ var EditoreditComponent = /** @class */ (function () {
 /***/ "./src/app/components/editorhome/editorhome.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".footer{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n        -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n}"
+module.exports = ".footer{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n        -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n}\r\n\r\n.writer-info{\r\n    -ms-flex-preferred-size: 60%;\r\n        flex-basis: 60%;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/components/editorhome/editorhome.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <h1>Editor Home</h1>\r\n</div>\r\n<br />\r\n<br />\r\n<div class=\"panel panel-primary\" *ngFor=\"let blog of blogPosts\">\r\n\r\n    <!-- Panel Title -->\r\n    <div class=\"panel-heading\">\r\n      <h3 class=\"panel-title\">{{ blog.title }}</h3>\r\n    </div>\r\n\r\n    <!-- Panel Body -->\r\n    <div class=\"panel-body\">\r\n      {{ blog.content }}\r\n    </div>\r\n\r\n    <!-- Panel Footer Start -->\r\n    <div class=\"panel-footer footer\">\r\n        <div>\r\n            <strong>Posted by: </strong>{{ blog.authorName }}\r\n            <strong> on </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}    \r\n        </div>\r\n        <div>\r\n          <!-- Edit Button -->\r\n          <a [routerLink]=\"['/editor/edit-blog/', blog._id]\" ><button type=\"button\" name=\"button\" class=\"btn btn-sm btn-info\">Edit</button></a>\r\n        </div>\r\n      </div>\r\n    <!-- Panel Footer End -->\r\n  </div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <h1>Editor Home</h1>\r\n</div>\r\n<br />\r\n<br />\r\n<div class=\"panel panel-primary\" *ngFor=\"let blog of blogPosts\">\r\n\r\n    <!-- Panel Title -->\r\n    <div class=\"panel-heading\">\r\n      <h3 class=\"panel-title\">{{ blog.title }}</h3>\r\n    </div>\r\n\r\n    <!-- Panel Body -->\r\n    <div class=\"panel-body\">\r\n      {{ blog.content }}\r\n    </div>\r\n\r\n    <!-- Panel Footer Start -->\r\n    <div class=\"panel-footer footer\">\r\n        <div class=\"writer-info\">\r\n            <strong>Posted by: </strong>{{ blog.authorName }}\r\n            <strong> on </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}    \r\n        </div>\r\n        <div class=\"crud-routes\">\r\n          <!-- Edit Button -->\r\n          <a [routerLink]=\"['/editor/edit-blog/', blog._id]\" ><button type=\"button\" name=\"button\" class=\"btn btn-sm btn-info\">Edit</button></a>\r\n        </div>\r\n      </div>\r\n    <!-- Panel Footer End -->\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -633,7 +633,7 @@ module.exports = ""
 /***/ "./src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Fixed navbar -->\r\n<nav class=\"navbar navbar-default navbar-inverse navbar-fixed-top\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n         <span class=\"sr-only\">Toggle navigation</span>\r\n         <span class=\"icon-bar\"></span>\r\n         <span class=\"icon-bar\"></span>\r\n         <span class=\"icon-bar\"></span>\r\n       </button>\r\n      <a class=\"navbar-brand\" routerLink=\"/\">HUSH CMS</a>\r\n    </div>\r\n    <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li><a *ngIf=\"authService.loggedIn()\" routerLink=\"/writer\">WriterHome</a></li>\r\n        <li><a *ngIf=\"authService.loggedIn()\" routerLink=\"/editor\">EditorHome</a></li>\r\n        <li><a *ngIf=\"authService.loggedIn()\" href=\"#\" (click)=\"onLogoutClick()\">Logout</a></li>\r\n        <li><a *ngIf=\"!authService.loggedIn()\" routerLink=\"/register\">Register</a></li>\r\n        <li><a *ngIf=\"!authService.loggedIn()\" routerLink=\"/login\">Login</a></li>\r\n      </ul>\r\n    </div>\r\n    <!--/.nav-collapse -->\r\n  </div>\r\n</nav>\r\n"
+module.exports = "<!-- Fixed navbar -->\r\n<nav class=\"navbar navbar-default navbar-inverse navbar-fixed-top\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n         <span class=\"sr-only\">Toggle navigation</span>\r\n         <span class=\"icon-bar\"></span>\r\n         <span class=\"icon-bar\"></span>\r\n         <span class=\"icon-bar\"></span>\r\n       </button>\r\n      <a class=\"navbar-brand\" routerLink=\"/\">HUSH CMS</a>\r\n    </div>\r\n    <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n        <li><a *ngIf=\"authService.loggedIn()\" routerLink=\"/writer\"><span class=\"glyphicon glyphicon-home\"></span>&nbsp;&nbsp;WriterHome</a></li>\r\n        <li><a *ngIf=\"authService.loggedIn()\" routerLink=\"/editor\"><span class=\"glyphicon glyphicon-home\"></span>&nbsp;&nbsp;EditorHome</a></li>\r\n        <li><a *ngIf=\"authService.loggedIn()\" href=\"#\" (click)=\"onLogoutClick()\"><span class=\"glyphicon glyphicon-log-out\"></span>&nbsp;&nbsp;Logout</a></li>\r\n        <li><a *ngIf=\"!authService.loggedIn()\" routerLink=\"/register\"><span class=\"glyphicon glyphicon-user\"></span>&nbsp;&nbsp;Register</a></li>\r\n        <li><a *ngIf=\"!authService.loggedIn()\" routerLink=\"/login\"><span class=\"glyphicon glyphicon-log-in\"></span>&nbsp;&nbsp;Login</a></li>\r\n      </ul>\r\n    </div>\r\n    <!--/.nav-collapse -->\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -688,14 +688,14 @@ var NavbarComponent = /** @class */ (function () {
 /***/ "./src/app/components/protected/protected.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".warning{\r\n    height: 80vh;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: center;\r\n        -ms-flex-pack: center;\r\n            justify-content: center;\r\n    -webkit-box-align: center;\r\n        -ms-flex-align: center;\r\n            align-items: center;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/components/protected/protected.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>You are not AUTHORIZED to view this page</h1>"
+module.exports = "<div class=\"warning\">\r\n    <h1>You are not AUTHORIZED to view this page</h1>\r\n</div>"
 
 /***/ }),
 
@@ -1213,14 +1213,14 @@ var WritereditComponent = /** @class */ (function () {
 /***/ "./src/app/components/writer/writerhome.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".footer{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n        -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n}"
+module.exports = ".footer{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n        -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n}\r\n\r\n.writer-info{\r\n    -ms-flex-preferred-size: 60%;\r\n        flex-basis: 60%;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/components/writer/writerhome.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <button class=\"btn btn-primary\" routerLink=\"/writer/newblog\">New Blog</button>\r\n  <button class=\"btn btn-primary\" (click)=\"getBlogs()\">Reload Blogs</button>\r\n</div>\r\n<br />\r\n<br />\r\n<div class=\"panel panel-primary\" *ngFor=\"let blog of blogPosts\">\r\n\r\n    <!-- Panel Title -->\r\n    <div class=\"panel-heading\">\r\n      <h3 class=\"panel-title\">{{ blog.title }}</h3>\r\n    </div>\r\n\r\n    <!-- Panel Body -->\r\n    <div class=\"panel-body\">\r\n      {{ blog.content }}\r\n    </div>\r\n\r\n    <!-- Panel Footer Start -->\r\n    <div class=\"panel-footer footer\">\r\n      <div>\r\n          <strong>Posted by: </strong>{{ blog.authorName }}\r\n          <strong> on </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}    \r\n      </div>\r\n      <div>\r\n        <!-- Edit Button -->\r\n        <a [routerLink]=\"['/writer/edit-blog/', blog._id]\" ><button type=\"button\" name=\"button\" class=\"btn btn-sm btn-info\">Edit</button></a>\r\n        <!-- Delete Button -->\r\n        <a [routerLink]=\"['/writer/delete-blog/', blog._id]\" ><button type=\"button\" name=\"button\" class=\"btn btn-sm btn-danger\">Delete</button></a>\r\n      </div>\r\n    </div>\r\n    <!-- Panel Footer End -->\r\n  </div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <button class=\"btn btn-primary\" routerLink=\"/writer/newblog\">New Blog</button>\r\n  <button [disabled]=\"loadingBlogs\" class=\"btn btn-primary\" (click)=\"reloadBlogs()\"><span class=\"glyphicon glyphicon-repeat\"></span>&nbsp;&nbsp;Reload</button>\r\n</div>\r\n<br />\r\n<br />\r\n<div class=\"panel panel-primary\" *ngFor=\"let blog of blogPosts\">\r\n\r\n    <!-- Panel Title -->\r\n    <div class=\"panel-heading\">\r\n      <h3 class=\"panel-title\">{{ blog.title }}</h3>\r\n    </div>\r\n\r\n    <!-- Panel Body -->\r\n    <div class=\"panel-body\">\r\n      {{ blog.content }}\r\n    </div>\r\n\r\n    <!-- Panel Footer Start -->\r\n    <div class=\"panel-footer footer\">\r\n      <div class=\"writer-info\">\r\n          <strong>Posted by: </strong>{{ blog.authorName }}\r\n          <strong> on </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}    \r\n      </div>\r\n      <div class=\"crud-routes\">\r\n        <!-- Edit Button -->\r\n        <a [routerLink]=\"['/writer/edit-blog/', blog._id]\" ><button type=\"button\" name=\"button\" class=\"btn btn-sm btn-info\">Edit</button></a>\r\n        <!-- Delete Button -->\r\n        <a [routerLink]=\"['/writer/delete-blog/', blog._id]\" ><button type=\"button\" name=\"button\" class=\"btn btn-sm btn-danger\">Delete</button></a>\r\n      </div>\r\n    </div>\r\n    <!-- Panel Footer End -->\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -1245,7 +1245,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var WriterhomeComponent = /** @class */ (function () {
     function WriterhomeComponent(writerService) {
         this.writerService = writerService;
+        this.loadingBlogs = false;
     }
+    // Reload blogs on current page
+    WriterhomeComponent.prototype.reloadBlogs = function () {
+        var _this = this;
+        this.loadingBlogs = true; // Used to lock button
+        this.getBlogs(); // Add any new blogs to the page
+        setTimeout(function () {
+            _this.loadingBlogs = false; // Release button lock after four seconds
+        }, 4000);
+    };
     WriterhomeComponent.prototype.getBlogs = function () {
         var _this = this;
         this.writerService.getAllBlogs().subscribe(function (data) {

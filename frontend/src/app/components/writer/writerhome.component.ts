@@ -9,8 +9,18 @@ import { WriterService } from '../../services/writer.service';
 export class WriterhomeComponent implements OnInit {
 
   blogPosts;
+  loadingBlogs = false;
 
   constructor(private writerService: WriterService) { }
+
+  // Reload blogs on current page
+  reloadBlogs() {
+    this.loadingBlogs = true; // Used to lock button
+    this.getBlogs(); // Add any new blogs to the page
+    setTimeout(() => {
+      this.loadingBlogs = false; // Release button lock after four seconds
+    }, 4000);
+  }
 
   getBlogs(){
     this.writerService.getAllBlogs().subscribe(data => {

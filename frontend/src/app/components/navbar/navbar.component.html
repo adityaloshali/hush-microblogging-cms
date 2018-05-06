@@ -12,11 +12,11 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a *ngIf="authService.loggedIn()" routerLink="/writer">WriterHome</a></li>
-        <li><a *ngIf="authService.loggedIn()" routerLink="/editor">EditorHome</a></li>
-        <li><a *ngIf="authService.loggedIn()" href="#" (click)="onLogoutClick()">Logout</a></li>
-        <li><a *ngIf="!authService.loggedIn()" routerLink="/register">Register</a></li>
-        <li><a *ngIf="!authService.loggedIn()" routerLink="/login">Login</a></li>
+        <li><a *ngIf="authService.loggedIn()" routerLink="/writer"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;WriterHome</a></li>
+        <li><a *ngIf="authService.loggedIn()" routerLink="/editor"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;EditorHome</a></li>
+        <li><a *ngIf="authService.loggedIn()" href="#" (click)="onLogoutClick()"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>
+        <li><a *ngIf="!authService.loggedIn()" routerLink="/register"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Register</a></li>
+        <li><a *ngIf="!authService.loggedIn()" routerLink="/login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a></li>
       </ul>
     </div>
     <!--/.nav-collapse -->
