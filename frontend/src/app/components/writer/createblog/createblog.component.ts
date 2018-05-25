@@ -12,6 +12,7 @@ export class CreateblogComponent implements OnInit {
   messageClass;
   message;
   contentLength = 0;
+  categories = ["career","employment","upskilling","management"];
 
   constructor(
     private writerService: WriterService,

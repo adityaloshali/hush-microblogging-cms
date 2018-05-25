@@ -25,6 +25,7 @@ import { EditorService } from './services/editor.service';
 import { EditoreditComponent } from './components/editorhome/editoredit/editoredit.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
+import { FormLimitDirective } from './directives/form-limit.directive';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { NotAuthGuard } from './guards/notAuth.guard';
     WritereditComponent,
     DeleteblogComponent,
     EditorhomeComponent,
-    EditoreditComponent
+    EditoreditComponent,
+    FormLimitDirective
   ],
   imports: [
     BrowserModule,

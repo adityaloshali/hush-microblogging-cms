@@ -16,6 +16,7 @@ export class EditoreditComponent implements OnInit {
   currentParams;
   loading = true;
   contentLength = 0;
+  categories = ["career","employment","upskilling","management"];
 
   constructor(
     private activatedRoute: ActivatedRoute,

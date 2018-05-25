@@ -44,10 +44,11 @@
         <div class="form-group">
             <label for="category">Blog Category</label>
             <select #category="ngModel" name="category" id="category" [(ngModel)]="blog.category" class="form-control" required>
-              <option value="career">Career</option>
+              <!-- <option value="career">Career</option>
               <option value="employment">Employment</option>
               <option value="upskilling">Upskilling</option>
-              <option value="management">Management</option>
+              <option value="management">Management</option> -->
+              <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
             </select>
             <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
               Category is required.

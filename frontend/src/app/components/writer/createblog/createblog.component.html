@@ -17,12 +17,15 @@
       </div>
       <div class="form-group">
           <label for="content">Blog Content</label>
-          <textarea type="textarea" rows="10" cols="80 "name="content" id="content" ngModel class="form-control" (input)="contentChange($event.target.value)" #content="ngModel" required></textarea>
-          <div class="alert alert-danger" *ngIf="content.touched && content.invalid">
+          <textarea type="textarea" rows="10" cols="80 "name="content" id="content" [(ngModel)]="f.content" class="form-control" (input)="contentChange($event.target.value)" #content="ngModel" required contentlimit></textarea>
+          <div class="help-block" *ngIf="(content.dirty || content.touched)">
+            {{ contentLength }} words.</div>
+          <div class="alert alert-danger" *ngIf="content.errors && content.errors.required && (content.dirty || content.touched)">
               Content is required.
-            </div>
-          <div class="alert alert-danger" *ngIf="(contentLength < 4 || contentLength > 150) && (content.dirty || content.touched)">
-           Content length is  {{ contentLength }} words.</div>
+          </div>
+          <div class="alert alert-danger" *ngIf="content.errors && (content.dirty || content.touched)">  
+            <p *ngIf="content.errors.contentlimit">Content length should be between 4 to 150 words</p>  
+          </div> 
       </div>
       <div class="form-group">
           <label for="imageUrl">Image URL</label>
@@ -42,10 +45,11 @@
       <div class="form-group">
           <label for="category">Blog Category</label>
           <select #category="ngModel" name="category" id="category" ngModel class="form-control" required>
-            <option value="career">Career</option>
+            <!-- <option value="career">Career</option>
             <option value="employment">Employment</option>
             <option value="upskilling">Upskilling</option>
-            <option value="management">Management</option>
+            <option value="management">Management</option> -->
+            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
           </select>
           <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
              Category is required.
