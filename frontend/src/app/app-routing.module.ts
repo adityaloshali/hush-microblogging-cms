@@ -10,6 +10,8 @@ import { WriterhomeComponent } from './components/writer/writerhome.component';
 import { WritereditComponent } from './components/writer/writeredit/writeredit.component';
 import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.component';
 import { EditorhomeComponent } from './components/editorhome/editorhome.component';
+import { EditorblogsComponent } from './components/editorhome/editorblogs/editorblogs.component';
+import { CategoriesdashboardComponent } from './components/editorhome/categoriesdashboard/categoriesdashboard.component';
 import { EditorGuard } from './guards/editor.guard';
 import { EditoreditComponent } from './components/editorhome/editoredit/editoredit.component';
 import { NotAuthGuard } from './guards/notAuth.guard';
@@ -60,6 +62,16 @@ const appRoutes: Routes = [
   {
     path: 'editor',
     component: EditorhomeComponent,
+    canActivate: [EditorGuard, AuthGuard]
+  },
+  {
+    path: 'editorblogs',
+    component: EditorblogsComponent,
+    canActivate: [EditorGuard, AuthGuard]
+  },
+  {
+    path: 'editorcategories',
+    component: CategoriesdashboardComponent,
     canActivate: [EditorGuard, AuthGuard]
   },
   {

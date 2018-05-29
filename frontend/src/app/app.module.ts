@@ -22,10 +22,13 @@ import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.c
 import { EditorhomeComponent } from './components/editorhome/editorhome.component';
 import { EditorGuard } from './guards/editor.guard';
 import { EditorService } from './services/editor.service';
+import { CategoriesService } from './services/categories.service';
 import { EditoreditComponent } from './components/editorhome/editoredit/editoredit.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
 import { FormLimitDirective } from './directives/form-limit.directive';
+import { EditorblogsComponent } from './components/editorhome/editorblogs/editorblogs.component';
+import { CategoriesdashboardComponent } from './components/editorhome/categoriesdashboard/categoriesdashboard.component';
 
 
 @NgModule({
@@ -42,7 +45,9 @@ import { FormLimitDirective } from './directives/form-limit.directive';
     DeleteblogComponent,
     EditorhomeComponent,
     EditoreditComponent,
-    FormLimitDirective
+    FormLimitDirective,
+    EditorblogsComponent,
+    CategoriesdashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,8 @@ import { FormLimitDirective } from './directives/form-limit.directive';
     WriterGuard, 
     WriterService, 
     EditorGuard, 
-    EditorService, 
+    EditorService,
+    CategoriesService, 
     AuthGuard, 
     NotAuthGuard],
   bootstrap: [AppComponent]

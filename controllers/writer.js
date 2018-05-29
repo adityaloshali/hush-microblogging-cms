@@ -29,8 +29,6 @@ exports.createBlog = function(req, res){
        
     });
 
-    console.log(req.body.title+" "+req.body.content+" ");
-
     // Save blog into database
     blog.save((err) => {
         // Check if error

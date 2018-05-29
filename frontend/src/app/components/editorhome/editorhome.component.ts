@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EditorService } from '../../services/editor.service';
 
 @Component({
   selector: 'app-editorhome',
@@ -8,22 +7,9 @@ import { EditorService } from '../../services/editor.service';
 })
 export class EditorhomeComponent implements OnInit {
 
-  blogPosts;
-
-  constructor(private editorService: EditorService) { }
-
-  getBlogs(){
-    this.editorService.getAllBlogs().subscribe(data => {
-      this.blogPosts = data.blogs;
-      console.log(this.blogPosts);
-    });
-  }
+  constructor() { }
 
   ngOnInit() {
-    this.editorService.getAllBlogs().subscribe(data => {
-      this.blogPosts = data.blogs;
-      console.log(this.blogPosts);
-    });
   }
 
 }

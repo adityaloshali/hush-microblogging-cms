@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorService } from '../../../services/editor.service';
+import { CategoriesService } from '../../../services/categories.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -21,7 +22,8 @@ export class EditoreditComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private editorService: EditorService
+    private editorService: EditorService,
+    private categoriesService: CategoriesService
   ) { }
 
   contentChange(searchValue : string ) {  
@@ -45,7 +47,7 @@ export class EditoreditComponent implements OnInit {
           this.message = data.message; // Return success message
           // Clear form data after two seconds
           setTimeout(() => {
-            this.router.navigate(['/editor']);
+            this.router.navigate(['/editorblogs']);
           }, 2000);
       }
      });
@@ -66,7 +68,11 @@ export class EditoreditComponent implements OnInit {
         this.blog = data.blog; // Save blog object for use in HTML
         this.loading = false; // Allow loading of blog form
       }
-    });        
+    });
+    
+    this.categoriesService.getCategories().subscribe(data => {
+      this.categories = data.categories;
+    });
   }
 
 }

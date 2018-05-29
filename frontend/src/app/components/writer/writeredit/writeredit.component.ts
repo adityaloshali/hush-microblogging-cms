@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WriterService } from '../../../services/writer.service';
+import { CategoriesService } from '../../../services/categories.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -21,7 +22,8 @@ export class WritereditComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private writerService: WriterService
+    private writerService: WriterService,
+    private categoriesService: CategoriesService
   ) { }
 
   contentChange(searchValue : string ) {  
@@ -65,7 +67,11 @@ export class WritereditComponent implements OnInit {
         this.blog = data.blog; // Save blog object for use in HTML
         this.loading = false; // Allow loading of blog form
       }
-    });        
+    });      
+    
+    this.categoriesService.getCategories().subscribe(data => {
+      this.categories = data.categories;
+    });
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WriterService } from '../../../services/writer.service';
+import { CategoriesService } from '../../../services/categories.service';
 import { Router } from "@angular/router";
 
 @Component({
@@ -16,6 +17,7 @@ export class CreateblogComponent implements OnInit {
 
   constructor(
     private writerService: WriterService,
+    private categoriesService: CategoriesService,
     private router: Router) { }
 
   contentChange(searchValue : string ) {  
@@ -43,6 +45,9 @@ export class CreateblogComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.categoriesService.getCategories().subscribe(data => {
+      this.categories = data.categories;
+    });
   }
 
 }

@@ -1,8 +1,14 @@
-.footer{
+div.col-md-6{
+    height: 85vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
-.writer-info{
-    flex-basis: 60%;
+.cyan{
+    background-color: cyan;
+}
+
+.pink{
+    background-color: lightcoral;
 }

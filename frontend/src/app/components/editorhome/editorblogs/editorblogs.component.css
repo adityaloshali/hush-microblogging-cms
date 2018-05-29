@@ -1,0 +1,8 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.writer-info{
+    flex-basis: 60%;
+}

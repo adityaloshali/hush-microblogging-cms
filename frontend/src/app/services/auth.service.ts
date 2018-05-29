@@ -87,6 +87,34 @@ export class AuthService {
     }
   }
 
+  // Function to check if user is logged in
+  loggedInAsWriter() {
+    let authToken = localStorage.getItem('hushToken');
+    if(!this.isTokenExpired(authToken)){
+      if(this.hasAuthority()==="writer"){
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }
+  }
+
+  // Function to check if user is logged in
+  loggedInAsEditor() {
+    let authToken = localStorage.getItem('hushToken');
+    if(!this.isTokenExpired(authToken)){
+      if(this.hasAuthority()==="editor"){
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }
+  }
+
   hasAuthority(){
     return localStorage.getItem('hushAuthority');
   }

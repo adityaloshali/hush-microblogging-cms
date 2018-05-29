@@ -27,6 +27,7 @@ export class WriterService {
 
   createBlog(blog) {
     this.createAuthenticationHeaders(); // Create headers
+    console.log(blog);
     return this.http.post(this.domain + 'api/writer/new', blog, this.options).map(res => { 
       console.log(res.json());
       return res.json(); 
