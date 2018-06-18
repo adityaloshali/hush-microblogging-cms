@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from '../../../services/categories.service';
+import { MiscService } from '../../../services/misc.service';
 
 @Component({
   selector: 'app-categoriesdashboard',
@@ -11,11 +11,11 @@ export class CategoriesdashboardComponent implements OnInit {
   messageClass;
   message;
 
-  constructor(private categoriesService: CategoriesService) { }
+  constructor(private miscService: MiscService) { }
   
   addCategory(category){
     category.category = category.category.trim();
-    this.categoriesService.createBlog(category).subscribe(data => {
+    this.miscService.createCategory(category).subscribe(data => {
       console.log(data);
       if (!data.success) {
         this.messageClass = 'alert alert-danger'; // Return error class

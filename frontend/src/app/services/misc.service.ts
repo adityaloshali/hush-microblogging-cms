@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class CategoriesService {
+export class MiscService {
 
   options;
   domain = this.authService.domain;
@@ -24,8 +23,7 @@ export class CategoriesService {
     });
   }
 
-
-  createBlog(blog) {
+  createCategory(blog) {
     this.createAuthenticationHeaders(); // Create headers
     console.log(blog);
     return this.http.post(this.domain + 'api/categories', blog, this.options).map(res => { 
@@ -38,6 +36,13 @@ export class CategoriesService {
     this.createAuthenticationHeaders(); // Create headers
     return this.http.get(this.domain + 'api/categories', this.options).map(res => { 
       console.log(res.json());
+      return res.json(); 
+    });
+  }
+
+  getAWSKeys(){
+    this.createAuthenticationHeaders(); // Create headers
+    return this.http.get(this.domain + 'api/awskeys', this.options).map(res => { 
       return res.json(); 
     });
   }

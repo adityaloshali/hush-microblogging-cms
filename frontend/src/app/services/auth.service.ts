@@ -119,6 +119,10 @@ export class AuthService {
     return localStorage.getItem('hushAuthority');
   }
 
+  getUserId(){
+    return localStorage.getItem('hushUserId');
+  }
+
   getTokenExpirationDate(token: string): Date {
     const decoded = jwt_decode(token);
 

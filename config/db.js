@@ -2,5 +2,5 @@ const crypto = require('crypto').randomBytes(256).toString('hex'); // Provides c
 
 // Export config object
 module.exports = {
-  secret: "mysecret", // Cryto-created secret
+  secret: "mysecretmysupersecret", // Cryto-created secret
 }

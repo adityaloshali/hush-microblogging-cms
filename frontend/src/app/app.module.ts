@@ -22,7 +22,7 @@ import { DeleteblogComponent } from './components/writer/deleteblog/deleteblog.c
 import { EditorhomeComponent } from './components/editorhome/editorhome.component';
 import { EditorGuard } from './guards/editor.guard';
 import { EditorService } from './services/editor.service';
-import { CategoriesService } from './services/categories.service';
+import { MiscService } from './services/misc.service';
 import { EditoreditComponent } from './components/editorhome/editoredit/editoredit.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
@@ -62,7 +62,7 @@ import { CategoriesdashboardComponent } from './components/editorhome/categories
     WriterService, 
     EditorGuard, 
     EditorService,
-    CategoriesService, 
+    MiscService, 
     AuthGuard, 
     NotAuthGuard],
   bootstrap: [AppComponent]

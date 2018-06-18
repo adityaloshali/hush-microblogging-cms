@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WriterService } from '../../../services/writer.service';
-import { CategoriesService } from '../../../services/categories.service';
+import { MiscService } from '../../../services/misc.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -23,7 +23,7 @@ export class WritereditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private writerService: WriterService,
-    private categoriesService: CategoriesService
+    private miscService: MiscService
   ) { }
 
   contentChange(searchValue : string ) {  
@@ -69,7 +69,7 @@ export class WritereditComponent implements OnInit {
       }
     });      
     
-    this.categoriesService.getCategories().subscribe(data => {
+    this.miscService.getCategories().subscribe(data => {
       this.categories = data.categories;
     });
   }
